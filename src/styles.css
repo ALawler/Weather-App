@@ -1,0 +1,82 @@
+body {
+  font-family: "Varela Round", sans-serif;
+  color: #f9bf74;
+  background: #574b81;
+  background: linear-gradient(180deg, #eb769f 0%, #f9bf74 50%);
+  background-attachment: fixed;
+}
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.row {
+  text-align: center;
+  max-width: 500px;
+}
+.mainImage {
+  width: 500px;
+  height: 250px;
+  border-radius: 50% 50% 0 0 / 100% 100% 10% 10%;
+  background: url(graphics/mainImages/LofiWeather_Rain.png);
+  background-size: 100%;
+  background-color: #685c92;
+  box-shadow: 4px 4px 30px -15px rgba(33, 26, 57, 1) inset;
+}
+.ticker,
+.break {
+  font-size: small;
+  color: rgba(53, 38, 110, 1);
+}
+.currentInfo {
+  font-size: 32px;
+}
+#tempFC {
+  font-size: 32px;
+}
+.secondaryInfo {
+  font-size: 13px;
+}
+.break {
+  max-height: 10px;
+}
+.week {
+  font-size: 13px;
+  color: #eb769f;
+}
+.icon {
+  font-size: 20px;
+  color: #eb769f;
+}
+#citySearchInput {
+  text-align: left;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(53, 38, 110, 1);
+}
+#buttonSearch {
+  text-align: right;
+  font-size: 13px;
+  font-style: normal;
+}
+#buttonCurrentCity {
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+}
+.gradientP {
+  background: #574b81;
+  background: linear-gradient(
+    90deg,
+    #574b81 0%,
+    #685c92 25%,
+    #685c92 75%,
+    #574b81 100%
+  );
+}
+.gradientP2 {
+  background: #574b81;
+  background: linear-gradient(180deg, #574b81 0%, #685c92 90%);
+}
+.rainDrop {
+  font-size: x-small;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App - HTML/CSS - Lawler</title>
+    <meta charset="UTF-8" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+    crossorigin="anonymous">
+
+    <link 
+    href="src/styles.css" 
+    rel="stylesheet" 
+    type="text/css"/>
+
+    <link 
+    rel="preconnect" 
+    href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <script
+      src="https://kit.fontawesome.com/7cadebbb4c.js"
+      crossorigin="anonymous">
+      </script>
+
+<script
+src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"
+alt="Axios"
+></script>
+
+</head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col g-0 mainImage">
+        </div>
+      </div>
+
+      <div class="row ticker gradientP">
+        <div class="col pt-1" id="description">
+        
+        </div>
+      </div>
+
+      <div class="row currentInfo gradientP">
+        <div class="col-8" id="currentCity">
+          Detroit
+            </div>
+          <div class="col-4">
+            <span id="currentTemp">52° </span><span class ="tempType" id="tempFC">F</span>
+          </div> 
+      </div>
+
+      <div class="row secondaryInfo gradientP">
+        <div class="col-8 pt-1">
+          <span id="currentDateTime"></span>
+          <div class="sunRiseSet pt-1">
+            <span class="col-4"><i class="fa-solid fa-sun"></i> Sunrise - <span id="sunrise">8:02am</span> &nbsp &nbsp &nbsp</span>
+            <span class="col-4"><i class="fa-regular fa-sun"></i> Sunset - <span id="sunset">5:08pm</span></span>
+        </div>
+
+        </div>
+          <div class="col-4">
+            <span id="maxTemp">55</span> / <span id="minTemp">42</span> : Feels ~ <span id="feelsLike">50</span>
+            <div><i class="fa-solid fa-droplet rainDrop"></i> <span id="humidity">73</span>%</div>
+            <div><i class="fa-solid fa-wind"></i> <span id="windDir"></span> <span id="windSpeed"></span></div>
+          </div>
+        </div>
+
+      <div class="row break gradientP">
+        <div class="col">
+        </br class="break">
+        </div>
+      </div>
+
+      <div class="row week gradientP">
+        <div class="col">
+          Today
+          <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+          <div>55°</div>
+          <div><i class="fa-solid fa-droplet rainDrop"></i> 93%</div>
+        </div>
+
+        <div
+          class="col"
+        >
+        Sat
+        <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+        <div>45°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 77%</div>
+        </div>
+        <div
+          class="col"
+        >
+        Sun
+        <div class="icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+        <div>45°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 34%</div>
+        </div>
+        <div
+          class="col"
+        >
+        Mon
+        <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+        <div>47°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 24%</div>
+        </div>
+        <div
+          class="col"
+        >
+        Tue
+        <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+        <div>63°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 89%</div>
+        </div>
+        <div
+          class="col"
+        >
+        Wed
+        <div class="icon"><i class="fa-solid fa-cloud"></i></div>
+        <div>46°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 24%</div>
+        </div>
+        <div
+          class="col"
+        >
+        Thu
+        <div class="icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        <div>32°</div>
+        <div><i class="fa-solid fa-droplet rainDrop"></i> 16%</div>
+        </div>
+      </div>
+
+      <div class="row search">
+        <div class="col-1"></div>
+        <div class="col-7 pt-1 pb-1 gradientP2">
+          <form id="citySearchForm">
+          <input
+          type="text"
+          placeholder="City search"
+          autocomplete="off"
+          autofocus="on"
+          id="citySearchInput" />
+          <span class="pt-1 pb-1 gradientP2">
+            <input type="submit" value="Search" id="buttonSearch"/></span>
+          </div>
+          <span class="col-3 pt-1 pb-1 gradientP2">
+          <input type="submit" value="Current City" id="buttonCurrentCity"/></span>
+        </form>
+        <div class="col-1"></div>
+      </div>
+
+
+      <script src="src/index.js"></script>
+  </body>
+</html>
