@@ -80,6 +80,7 @@ function displayWeatherInfo(response) {
   )} mph`;
 
   function windDegreeLabel() {
+    let windDegree = response.data.wind.deg;
     if (windDegree === 0) {
       degreeLabel = ``;
     } else {
@@ -147,15 +148,10 @@ function displayWeatherInfo(response) {
         }
       }
     }
-    console.log(windDegree);
-    console.log(degreeLabel);
-    return `${degreeLabel}`;
-    console.log(degreeLabel);
+
+    document.querySelector("#windDir").innerHTML = `${degreeLabel}`;
   }
-
-  let degreeLabel = document.querySelector("#windDir");
-  let windDegree = response.data.wind.deg;
-
+  windDegreeLabel();
   //document.querySelector("#description").innerHTML = response.data.weather.description;
   //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
   //document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
