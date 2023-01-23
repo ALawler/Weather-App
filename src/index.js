@@ -1,5 +1,3 @@
-import "./styles.css";
-
 //Live Day/Date/Time
 function dateFormat(current) {
   let dayNames = [
