@@ -136,19 +136,15 @@ alt="Axios"
 
       <div class="row search">
         <div class="col-1"></div>
-        <div class="col-7 pt-1 pb-1 gradientP2">
+        <div class="col-10 pt-1 pb-1 gradientP2">
           <form id="citySearchForm">
-          <input
-          type="text"
-          placeholder="City search"
-          autocomplete="off"
-          autofocus="on"
-          id="citySearchInput" />
-          <span class="pt-1 pb-1 gradientP2">
-            <input type="submit" value="Search" id="buttonSearch"/></span>
-          </div>
-          <span class="col-3 pt-1 pb-1 gradientP2">
-          <input type="submit" value="Current City" id="buttonCurrentCity"/></span>
+            
+            <div class="col-auto input-group">
+              <input type="text" id="citySearchInput" class="form-control pt-1 pb-1 gradientP2" autocomplete="off" autofocus="on" placeholder="City Search" aria-label="Recipient's username with two button addons">
+              <button class="btn btn-outline-secondary pt-1 pb-1 gradientP2" type="submit" id="buttonSearch">Search</button>
+              <button class="btn btn-outline-secondary pt-1 pb-1 gradientP2" type="button" id="buttonCurrentCity">Current City</button>
+            </div>
+
         </form>
         <div class="col-1"></div>
       </div>
@@ -157,3 +153,4 @@ alt="Axios"
       <script src="src/index.js"></script>
   </body>
 </html>
+

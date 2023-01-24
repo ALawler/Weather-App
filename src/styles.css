@@ -52,16 +52,14 @@ body {
   font-size: 13px;
   font-style: italic;
   color: rgba(53, 38, 110, 1);
+  border-color: rgba(53, 38, 110, 1);
 }
-#buttonSearch {
-  text-align: right;
-  font-size: 13px;
-  font-style: normal;
-}
+#buttonSearch,
 #buttonCurrentCity {
-  text-align: center;
   font-size: 13px;
   font-style: normal;
+  color: rgba(53, 38, 110, 1);
+  border-color: rgba(53, 38, 110, 1);
 }
 .gradientP {
   background: #574b81;

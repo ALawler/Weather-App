@@ -59,7 +59,6 @@ currentDateTime.innerHTML = dateFormat(current);
 //Wind Cardinal Direction
 
 //display Weather Info
-
 function displayWeatherInfo(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(
@@ -152,7 +151,21 @@ function displayWeatherInfo(response) {
     document.querySelector("#windDir").innerHTML = `${degreeLabel}`;
   }
   windDegreeLabel();
-  //document.querySelector("#description").innerHTML = response.data.weather.description;
+
+  //function description() {
+  //document.querySelector("#description").innerHTML =
+  //response.data.weather.main;
+  //}
+
+  //description();
+
+  //function sunrise(response) {
+  //var theDate = new Date(Date.parse(response.data.sys.sunrise));
+  //document.querySelector("#sunrise").innerHTML = theDate.toLocaleString();
+  //console.log(theDate.toLocaleString);
+  //}
+
+  //sunrise();
   //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
   //document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
 }
@@ -165,6 +178,7 @@ function searchCity(city) {
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherInfo);
+  console.log(apiUrl);
 }
 
 function searchBar(event) {
