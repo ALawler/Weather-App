@@ -56,8 +56,6 @@ let currentDateTime = document.querySelector("#currentDateTime");
 let current = new Date();
 currentDateTime.innerHTML = dateFormat(current);
 
-//Wind Cardinal Direction
-
 //display Weather Info
 function displayWeatherInfo(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
@@ -81,37 +79,21 @@ function displayWeatherInfo(response) {
   let windDegree = response.data.wind.deg;
   if (windDegree === 0) {
     degreeLabel = ``;
-  } else if (windDegree >= 337.55) {
+  } else if (windDegree >= 337.55 || windDegree <= 22.54) {
     degreeLabel = "N";
-  } else if (windDegree <= 22.54) {
-    degreeLabel = "N";
-  } else if (windDegree >= 22.55) {
+  } else if (windDegree >= 22.55 || windDegree <= 67.54) {
     degreeLabel = "NE";
-  } else if (windDegree <= 67.54) {
-    degreeLabel = "NE";
-  } else if (windDegree >= 67.55) {
+  } else if (windDegree >= 67.55 || windDegree <= 112.54) {
     degreeLabel = "E";
-  } else if (windDegree <= 112.54) {
-    degreeLabel = "E";
-  } else if (windDegree >= 112.55) {
+  } else if (windDegree >= 112.55 || windDegree <= 157.54) {
     degreeLabel = "SE";
-  } else if (windDegree <= 157.54) {
-    degreeLabel = "SE";
-  } else if (windDegree >= 157.55) {
+  } else if (windDegree >= 157.55 || windDegree <= 202.54) {
     degreeLabel = "S";
-  } else if (windDegree <= 202.54) {
-    degreeLabel = "S";
-  } else if (windDegree >= 202.55) {
+  } else if (windDegree >= 202.55 || windDegree <= 247.54) {
     degreeLabel = "SW";
-  } else if (windDegree <= 247.54) {
-    degreeLabel = "SW";
-  } else if (windDegree >= 247.55) {
+  } else if (windDegree >= 247.55 || windDegree <= 292.54) {
     degreeLabel = "W";
-  } else if (windDegree <= 292.54) {
-    degreeLabel = "W";
-  } else if (windDegree >= 292.55) {
-    degreeLabel = "NW";
-  } else if (windDegree <= 337.54) {
+  } else if (windDegree >= 292.55 || windDegree <= 337.54) {
     degreeLabel = "NW";
   }
 
