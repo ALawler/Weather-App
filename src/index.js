@@ -56,6 +56,30 @@ let currentDateTime = document.querySelector("#currentDateTime");
 let current = new Date();
 currentDateTime.innerHTML = dateFormat(current);
 
+//display Weather Forecast
+function displayWeatherForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecastHTML = `<div class="row week gradientP">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col">
+          ${day}
+          <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+          <div class="weatherMax">55°</div>
+          <div class="humidity"><i class="fa-solid fa-droplet rainDrop"></i> 93%</div>
+        </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `<div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 //display Weather Info
 function displayWeatherInfo(response) {
   document.querySelector("#currentCity").innerHTML = response.data.name;
@@ -151,3 +175,4 @@ currentCityButton.addEventListener("click", currentLocationPlaceTemp);
 
 //Default City
 searchCity("Detroit");
+displayWeatherForecast();
