@@ -78,92 +78,51 @@ function displayWeatherInfo(response) {
     response.data.wind.speed
   )} mph`;
 
-  function windDegreeLabel() {
-    let windDegree = response.data.wind.deg;
-    if (windDegree === 0) {
-      degreeLabel = ``;
-    } else {
-      if (windDegree >= 337.55) {
-        degreeLabel = "N";
-      } else {
-        if (windDegree <= 22.54) {
-          degreeLabel = "N";
-        } else {
-          if (windDegree >= 22.55) {
-            degreeLabel = "NE";
-          } else {
-            if (windDegree <= 67.54) {
-              degreeLabel = "NE";
-            } else {
-              if (windDegree >= 67.55) {
-                degreeLabel = "E";
-              } else {
-                if (windDegree <= 112.54) {
-                  degreeLabel = "E";
-                } else {
-                  if (windDegree >= 112.55) {
-                    degreeLabel = "SE";
-                  } else {
-                    if (windDegree <= 157.54) {
-                      degreeLabel = "SE";
-                    } else {
-                      if (windDegree >= 157.55) {
-                        degreeLabel = "S";
-                      } else {
-                        if (windDegree <= 202.54) {
-                          degreeLabel = "S";
-                        } else {
-                          if (windDegree >= 202.55) {
-                            degreeLabel = "SW";
-                          } else {
-                            if (windDegree <= 247.54) {
-                              degreeLabel = "SW";
-                            } else {
-                              if (windDegree >= 247.55) {
-                                degreeLabel = "W";
-                              } else {
-                                if (windDegree <= 292.54) {
-                                  degreeLabel = "W";
-                                } else {
-                                  if (windDegree >= 292.55) {
-                                    degreeLabel = "NW";
-                                  } else {
-                                    if (windDegree <= 337.54) {
-                                      degreeLabel = "NW";
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    document.querySelector("#windDir").innerHTML = `${degreeLabel}`;
+  let windDegree = response.data.wind.deg;
+  if (windDegree === 0) {
+    degreeLabel = ``;
+  } else if (windDegree >= 337.55) {
+    degreeLabel = "N";
+  } else if (windDegree <= 22.54) {
+    degreeLabel = "N";
+  } else if (windDegree >= 22.55) {
+    degreeLabel = "NE";
+  } else if (windDegree <= 67.54) {
+    degreeLabel = "NE";
+  } else if (windDegree >= 67.55) {
+    degreeLabel = "E";
+  } else if (windDegree <= 112.54) {
+    degreeLabel = "E";
+  } else if (windDegree >= 112.55) {
+    degreeLabel = "SE";
+  } else if (windDegree <= 157.54) {
+    degreeLabel = "SE";
+  } else if (windDegree >= 157.55) {
+    degreeLabel = "S";
+  } else if (windDegree <= 202.54) {
+    degreeLabel = "S";
+  } else if (windDegree >= 202.55) {
+    degreeLabel = "SW";
+  } else if (windDegree <= 247.54) {
+    degreeLabel = "SW";
+  } else if (windDegree >= 247.55) {
+    degreeLabel = "W";
+  } else if (windDegree <= 292.54) {
+    degreeLabel = "W";
+  } else if (windDegree >= 292.55) {
+    degreeLabel = "NW";
+  } else if (windDegree <= 337.54) {
+    degreeLabel = "NW";
   }
-  windDegreeLabel();
 
-  //function description() {
-  //document.querySelector("#description").innerHTML =
-  //response.data.weather.main;
-  //}
+  document.querySelector("#windDir").innerHTML = `${degreeLabel}`;
 
-  //description();
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
 
-  //function sunrise(response) {
-  //var theDate = new Date(Date.parse(response.data.sys.sunrise));
+  //let theDate = new Date(response.data.sys.sunrise);
   //document.querySelector("#sunrise").innerHTML = theDate.toLocaleString();
-  //console.log(theDate.toLocaleString);
-  //}
+  //console.log(theDate.toLocaleString());
 
   //sunrise();
   //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
