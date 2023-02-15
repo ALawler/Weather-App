@@ -83,25 +83,26 @@ function displayWeatherForecast(response) {
 
 //display Weather Info
 function displayWeatherInfo(response) {
-  document.querySelector("#currentCity").innerHTML = response.data.name;
+  document.querySelector("#currentCity").innerHTML = response.data.city;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   )}°`;
-  document.querySelector("#maxTemp").innerHTML = `${Math.round(
-    response.data.main.temp_max
-  )}°`;
-  document.querySelector("#minTemp").innerHTML = `${Math.round(
-    response.data.main.temp_min
-  )}°`;
+  //document.querySelector("#maxTemp").innerHTML = `${Math.round(
+  //response.data.main.temp_max
+  //)}°`;
+  //document.querySelector("#minTemp").innerHTML = `${Math.round(
+  //response.data.main.temp_min
+  //)}°`;
   document.querySelector("#feelsLike").innerHTML = `${Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   )}°`;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#windSpeed").innerHTML = `${Math.round(
     response.data.wind.speed
   )} mph`;
 
-  let windDegree = response.data.wind.deg;
+  let windDegree = response.data.wind.degree;
   if (windDegree === 0) {
     degreeLabel = ``;
   } else if (windDegree >= 337.55 || windDegree <= 22.54) {
@@ -161,7 +162,7 @@ function locateCurrentLocation(position) {
   let units = "imperial";
   let apiKey = "0bbef54a49efc7of4df96ea8t63e36a3";
   let apiEndpoint = "https://api.shecodes.io/weather/v1/current";
-  let apiUrl = `${apiEndpoint}&lon=${position.coords.longitude}?lat=${position.coords.latitude}&key=${apiKey}&units=${units}`;
+  let apiUrl = `${apiEndpoint}?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherInfo);
   console.log(apiUrl);
@@ -177,4 +178,4 @@ currentCityButton.addEventListener("click", currentLocationPlaceTemp);
 
 //Default City
 searchCity("Detroit");
-//displayWeatherForecast();
+displayWeatherForecast();
