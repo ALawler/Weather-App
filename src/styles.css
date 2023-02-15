@@ -25,6 +25,7 @@ body {
 .ticker,
 .break {
   font-size: small;
+  font-weight: bold;
   color: rgba(53, 38, 110, 1);
 }
 .currentInfo {
