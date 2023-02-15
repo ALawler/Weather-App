@@ -60,20 +60,22 @@ currentDateTime.innerHTML = dateFormat(current);
 function displayWeatherForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  //let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let forecastHTML = `<div class="row week gradientP">`;
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
-  <div class="col">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col">
           ${forecastDay}
           <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
           <div class="weatherMax">55°</div>
           <div class="humidity"><i class="fa-solid fa-droplet rainDrop"></i> 93%</div>
         </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `<div>`;
@@ -159,13 +161,19 @@ citySearch.addEventListener("submit", searchBar);
 
 //Button
 function locateCurrentLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
   let units = "imperial";
   let apiKey = "0bbef54a49efc7of4df96ea8t63e36a3";
   let apiEndpoint = "https://api.shecodes.io/weather/v1/current";
-  let apiUrl = `${apiEndpoint}?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=${units}`;
+  let apiUrl = `${apiEndpoint}?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(displayWeatherInfo);
+  axios.get(apiUrl).then(processLatLon);
   console.log(apiUrl);
+
+  function processLatLon(response) {}
+
+  displayWeatherInfo();
 }
 
 function currentLocationPlaceTemp(event) {
