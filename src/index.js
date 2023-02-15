@@ -57,17 +57,18 @@ let current = new Date();
 currentDateTime.innerHTML = dateFormat(current);
 
 //display Weather Forecast
-function displayWeatherForecast() {
+function displayWeatherForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let forecastHTML = `<div class="row week gradientP">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
   <div class="col">
-          ${day}
+          ${forecastDay}
           <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
           <div class="weatherMax">55°</div>
           <div class="humidity"><i class="fa-solid fa-droplet rainDrop"></i> 93%</div>
@@ -138,9 +139,9 @@ function displayWeatherInfo(response) {
 //Search Bar
 function searchCity(city) {
   let units = "imperial";
-  let apiKey = "8ef8ca0ec715c44991bd49b28615705a";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiKey = "0bbef54a49efc7of4df96ea8t63e36a3";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/current";
+  let apiUrl = `${apiEndpoint}?query=${city}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherInfo);
   console.log(apiUrl);
@@ -158,11 +159,12 @@ citySearch.addEventListener("submit", searchBar);
 //Button
 function locateCurrentLocation(position) {
   let units = "imperial";
-  let apiKey = "8ef8ca0ec715c44991bd49b28615705a";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiEndpoint}?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
+  let apiKey = "0bbef54a49efc7of4df96ea8t63e36a3";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/current";
+  let apiUrl = `${apiEndpoint}&lon=${position.coords.longitude}?lat=${position.coords.latitude}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherInfo);
+  console.log(apiUrl);
 }
 
 function currentLocationPlaceTemp(event) {
@@ -175,4 +177,4 @@ currentCityButton.addEventListener("click", currentLocationPlaceTemp);
 
 //Default City
 searchCity("Detroit");
-displayWeatherForecast();
+//displayWeatherForecast();
