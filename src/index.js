@@ -1,5 +1,26 @@
 //Live Day/Date/Time
 function dateFormat(current) {
+  let day = current.getDay();
+  let year = current.getFullYear();
+  let hour = current.getHours();
+  let amPm = "am";
+
+  if (hour >= 12) {
+    hour = `${hour}` - 12;
+    amPm = `pm`;
+  }
+
+  if (hour === 0) {
+    hour = `12`;
+    amPm = `am`;
+  }
+
+  let minutes = current.getMinutes();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   let dayNames = [
     "Sunday",
     "Monday",
@@ -28,33 +49,8 @@ function dateFormat(current) {
 
   let monthNumber = monthNumbers[current.getMonth()];
 
-  let day = current.getDay();
-  let year = current.getFullYear();
-  let hour = current.getHours();
-  let amPm = "am";
-
-  if (hour >= 12) {
-    hour = `${hour}` - 12;
-    amPm = `pm`;
-  }
-
-  if (hour === 0) {
-    hour = `12`;
-    amPm = `am`;
-  }
-
-  let minutes = current.getMinutes();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
   return `${dayName} ${monthNumber}/${day}/${year} &nbsp ${hour}:${minutes}${amPm}`;
 }
-
-let currentDateTime = document.querySelector("#currentDateTime");
-let current = new Date();
-currentDateTime.innerHTML = dateFormat(current);
 
 //display Weather Forecast
 function formatDay(timestamp) {
@@ -98,6 +94,10 @@ function displayWeatherForecast(response) {
 
 //display Weather Info
 function displayWeatherInfo(response) {
+  let currentDateTime = document.querySelector("#currentDateTime");
+  let current = new Date(); //response.data.time);
+  currentDateTime.innerHTML = dateFormat(current);
+
   document.querySelector("#currentCity").innerHTML = response.data.city;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(
     response.data.temperature.current
