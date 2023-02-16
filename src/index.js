@@ -57,30 +57,38 @@ let current = new Date();
 currentDateTime.innerHTML = dateFormat(current);
 
 //display Weather Forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayWeatherForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  //let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let forecastHTML = `<div class="row week gradientP">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-      forecastHTML =
-        forecastHTML +
-        `
-        <div class="col">
-          ${forecastDay}
+      forecastHTML += `
+        <div class="col-2">
+          ${formatDay(forecastDay.dt)}
           <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
-          <div class="weatherMax">55°</div>
-          <div class="humidity"><i class="fa-solid fa-droplet rainDrop"></i> 93%</div>
+          <div class="weatherMax">${Math.round(
+            forecastDay.temperature.maximum
+          )}°</div>
+          <div class="humidity"><i class="fa-solid fa-droplet rainDrop"></i> ${
+            forecastDay.temperature.humidity
+          }%</div>
         </div>
   `;
     }
   });
 
-  forecastHTML = forecastHTML + `<div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 //display Weather Info
@@ -128,7 +136,7 @@ function displayWeatherInfo(response) {
   document.querySelector("#windDir").innerHTML = `${degreeLabel}`;
 
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
 
   //let theDate = new Date(response.data.sys.sunrise);
   //document.querySelector("#sunrise").innerHTML = theDate.toLocaleString();
@@ -137,6 +145,16 @@ function displayWeatherInfo(response) {
   //sunrise();
   //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
   //document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
+
+  let lat = response.data.coordinates.latitude;
+  let lon = response.data.coordinates.longitude;
+  let units = "imperial";
+  let apiKey = "0bbef54a49efc7of4df96ea8t63e36a3";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/forecast";
+  let apiUrl = `${apiEndpoint}?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayWeatherForecast);
+  console.log(apiUrl);
 }
 
 //Search Bar
@@ -188,4 +206,3 @@ currentCityButton.addEventListener("click", currentLocationPlaceTemp);
 
 //Default City
 searchCity("Detroit");
-displayWeatherForecast();
