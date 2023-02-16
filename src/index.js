@@ -160,6 +160,12 @@ let citySearch = document.querySelector("#citySearchForm");
 citySearch.addEventListener("submit", searchBar);
 
 //Button
+function processLatLon(response) {
+  let city = response.data.city;
+
+  searchCity(city);
+}
+
 function locateCurrentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -170,10 +176,6 @@ function locateCurrentLocation(position) {
 
   axios.get(apiUrl).then(processLatLon);
   console.log(apiUrl);
-
-  function processLatLon(response) {}
-
-  displayWeatherInfo();
 }
 
 function currentLocationPlaceTemp(event) {
