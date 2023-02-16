@@ -74,8 +74,12 @@ function displayWeatherForecast(response) {
     if (index < 6) {
       forecastHTML += `
         <div class="col-2">
-          ${formatDay(forecastDay.dt)}
-          <div class="icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+          ${formatDay(forecastDay.time)}
+          <div class="icon">
+            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+              forecastDay.condition.icon
+            }.png" />
+            </div>
           <div class="weatherMax">${Math.round(
             forecastDay.temperature.maximum
           )}°</div>
