@@ -1,66 +1,4 @@
-//Live Day/Date/Time
-function dateFormat(current) {
-  let day = current.getDay();
-  let year = current.getFullYear();
-  let hour = current.getHours();
-  let amPm = "am";
-
-  if (hour >= 12) {
-    hour = `${hour}` - 12;
-    amPm = `pm`;
-  }
-
-  if (hour === 0) {
-    hour = `12`;
-    amPm = `am`;
-  }
-
-  let minutes = current.getMinutes();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let dayNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let dayName = dayNames[current.getDay()];
-
-  let monthNumbers = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ];
-
-  let monthNumber = monthNumbers[current.getMonth()];
-
-  return `${dayName} ${monthNumber}/${day}/${year} &nbsp ${hour}:${minutes}${amPm}`;
-}
-
 //display Weather Forecast
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
-
 function displayWeatherForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -92,11 +30,72 @@ function displayWeatherForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-//display Weather Info
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+//display Main Info
+function dateFormat(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDate();
+  let year = date.getFullYear();
+  let hour = date.getHours();
+  let amPm = "am";
+
+  if (hour >= 12) {
+    hour = `${hour}` - 12;
+    amPm = `pm`;
+  }
+
+  if (hour === 0) {
+    hour = `12`;
+    amPm = `am`;
+  }
+
+  let minutes = date.getMinutes();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let dayName = dayNames[date.getDay()];
+
+  let monthNumbers = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
+
+  let monthNumber = monthNumbers[date.getMonth()];
+
+  return `${dayName} ${monthNumber}/${day}/${year} &nbsp ${hour}:${minutes}${amPm}`;
+}
+
 function displayWeatherInfo(response) {
   let currentDateTime = document.querySelector("#currentDateTime");
-  let current = new Date(); //response.data.time);
-  currentDateTime.innerHTML = dateFormat(current);
+  currentDateTime.innerHTML = dateFormat(response.data.time);
 
   document.querySelector("#currentCity").innerHTML = response.data.city;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(

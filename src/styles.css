@@ -23,12 +23,10 @@ body {
   background-color: #89498b;
   box-shadow: 4px 4px 30px -15px #4c244d inset;
 }
-.ticker,
-.break {
+#description {
   font-size: small;
-  font-weight: bold;
-  color: #4c244d;
   text-transform: capitalize;
+  text-align: center;
 }
 .currentInfo {
   font-size: 32px;
